@@ -1,0 +1,12 @@
+D:\Code\C#\Game\ZapEcs\Zap_ecs\bin\Debug\net6.0\Zap_ecs.deps.json
+D:\Code\C#\Game\ZapEcs\Zap_ecs\bin\Debug\net6.0\Zap_ecs.dll
+D:\Code\C#\Game\ZapEcs\Zap_ecs\bin\Debug\net6.0\Zap_ecs.pdb
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.csproj.AssemblyReference.cache
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.AssemblyInfoInputs.cache
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.AssemblyInfo.cs
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.csproj.CoreCompileInputs.cache
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.dll
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\refint\Zap_ecs.dll
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\Zap_ecs.pdb
+D:\Code\C#\Game\ZapEcs\Zap_ecs\obj\Debug\net6.0\ref\Zap_ecs.dll
