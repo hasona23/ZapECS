@@ -1,3 +1,0 @@
-Source File,Dest File,Processor Type,Content Type,Source File Size,Dest File Size,Build Seconds
-"D:/Code/C#/Game/TopDown/TopDonwGame/Content/font.spritefont","D:/Code/C#/Game/TopDown/TopDonwGame/Content/bin/DesktopGL/font.xnb","FontDescriptionProcessor","SpriteFontContent",2068,21535,0.267898
-"D:/Code/C#/Game/TopDown/TopDonwGame/Content/tile_0040.png","D:/Code/C#/Game/TopDown/TopDonwGame/Content/bin/DesktopGL/tile_0040.xnb","TextureProcessor","Texture2DContent",195,1109,0.0135748
