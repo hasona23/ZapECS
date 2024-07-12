@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Code\\C#\\Game\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj": {}
+    "D:\\Code\\C#\\Zap\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj": {}
   },
   "projects": {
-    "D:\\Code\\C#\\Game\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj": {
+    "D:\\Code\\C#\\Zap\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Code\\C#\\Game\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj",
+        "projectUniqueName": "D:\\Code\\C#\\Zap\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj",
         "projectName": "Zap_ecs",
-        "projectPath": "D:\\Code\\C#\\Game\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj",
+        "projectPath": "D:\\Code\\C#\\Zap\\ZapEcs\\Zap_ecs\\Zap_ecs.csproj",
         "packagesPath": "C:\\Users\\sona2\\.nuget\\packages\\",
-        "outputPath": "D:\\Code\\C#\\Game\\ZapEcs\\Zap_ecs\\obj\\",
+        "outputPath": "D:\\Code\\C#\\Zap\\ZapEcs\\Zap_ecs\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

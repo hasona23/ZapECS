@@ -7,7 +7,4 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Tilemaps\" />
-  </ItemGroup>
 </Project>
