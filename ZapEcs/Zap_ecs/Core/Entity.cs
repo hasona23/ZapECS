@@ -27,7 +27,7 @@ namespace Zap_ecs.Core
         public void AddComponent<T>(T component) where T : class, IComponent
         {
             components[typeof(T)] = component;
-
+           
         }
 
         // Method to get a component of a specific type
@@ -45,7 +45,7 @@ namespace Zap_ecs.Core
         {
             return components.ContainsKey(typeof(T));
         }
-        public bool HasComponents(List<Type> types) 
+        public bool HasComponents(params Type[] types) 
         {
             foreach (var type in types)
             {

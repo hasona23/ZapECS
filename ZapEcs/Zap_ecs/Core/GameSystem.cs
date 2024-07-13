@@ -19,13 +19,13 @@ public abstract class GameSystem
         ComponentTypes = new List<Type>();
         entities = new List<Entity>();
     }
-    public void SetRequirments(Type[] types) 
+    public void SetRequirments(params Type[] types) 
     {
         ComponentTypes = types.ToList();
     }
-    public List<Type> GetSystemTypes() 
+    public Type[] GetSystemTypes() 
     {
-        return ComponentTypes;
+        return ComponentTypes.ToArray();
     }
 
     public abstract void Update(GameTime gt, SpriteBatch sb = null);

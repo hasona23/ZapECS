@@ -8,5 +8,6 @@ namespace Zap_ecs.Core
 {
     public interface IComponent
     {
+       
     }
 }
