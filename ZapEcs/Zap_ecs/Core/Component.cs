@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Zap_ecs.Core
 {
-    public interface IComponent
+    public abstract class Component
     {
        
     }
