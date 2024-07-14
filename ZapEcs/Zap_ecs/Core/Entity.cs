@@ -8,43 +8,53 @@ namespace Zap_ecs.Core
 {
     public class Entity
     {
-        //public int Id { get; private set; }
-        //private static int IdCount = 0;
+        public int Id { get; private set; }
         public string name { get; set; }
 
         // Dictionary to store components by type
         private Dictionary<Type, IComponent> components = new Dictionary<Type, IComponent>();
-        private List<GameSystem> systems = new List<GameSystem>();
+       
         
         // Constructor to initialize the entity with an ID
-        public Entity(string name = "entity")
+        public Entity(int id,string name)
         {
+            this.Id = id;
             this.name = name;
-         //   Id = IdCount++;
         }
+        public Entity(int id)
+        {
+            this.Id = id;
+            this.name = "entity";
+        }
+       
 
         // Method to add a component to the entity
-        public void AddComponent<T>(T component) where T : class, IComponent
+        public void AddComponent<T>(T component) where T : IComponent
         {
-            components[typeof(T)] = component;
-           
+            components[component.GetType()] = component;
         }
 
         // Method to get a component of a specific type
-        public T GetComponent<T>() where T : class, IComponent
+        public T GetComponent<T>() where T : IComponent
         {
             if (components.TryGetValue(typeof(T), out var component))
             {
-                return component as T;
+                return (T)component;
             }
             return null;
         }
 
         // Method to check if the entity has a component of a specific type
-        public bool HasComponent<T>() where T : class, IComponent
+        public bool HasComponent<T>() where T : IComponent
         {
             return components.ContainsKey(typeof(T));
         }
+
+        public bool HasComponent(Type componentType)
+        {
+            return components.ContainsKey(typeof(Type));
+        }
+
         public bool HasComponents(params Type[] types) 
         {
             foreach (var type in types)
@@ -57,19 +67,9 @@ namespace Zap_ecs.Core
             return true;
         }
 
-        // Method to remove a component from the entity
-        public void RemoveComponent<T>() where T : class, IComponent
-        {
-
-            components.Remove(typeof(T));
-            foreach(var system in systems)
-            {
-                if (!this.HasComponents(system.GetSystemTypes()))
-                {
-                    system.entities.Remove(this);
-                    systems.Remove(system);
-                }
-            }
-        }
+       public void RemoveComponent<T>() where T : IComponent
+       {
+            components.Remove(typeof(T)); 
+       }
     }
 }

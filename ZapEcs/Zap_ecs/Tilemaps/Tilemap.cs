@@ -72,24 +72,27 @@ namespace Zap_ecs.Tilemaps
             tilemap = results;
         }
 
-        public List<Tile> GetCollisions() 
+        public List<Tile> GetCollisions(params int[] keys) 
         {
 
             if (collisionMode == CollisionMode.None)
                 return new List<Tile>();
+
             List<Tile> collisions = new List<Tile>();
             foreach (var tile in tilemap)
             {
-               
-                    Tile tileRect = new Tile();
-                tileRect.rect = new Rectangle(new Point(GetXPos(tile), GetYPos(tile)), new Point(GetScale(tileSize), GetScale(tileSize)));
-                    collisions.Add(tileRect);
-                    
-                
+                if (!keys.Contains(tile.Value))
+                    continue;
+                Tile tileRect = new Tile();
+                tileRect.rect = new Rectangle(GetXPos(tile), GetYPos(tile),GetScale(), GetScale());
+                collisions.Add(tileRect);
+
+                Debug.WriteLine(tileRect.rect);
             }
             return collisions;
         }
-
+        
+        
 
         public void DrawMapTextures(SpriteBatch spriteBatch) 
         {
@@ -97,7 +100,7 @@ namespace Zap_ecs.Tilemaps
             {
                 if (textureDict.ContainsKey(tile.Value)) 
                 {
-                    spriteBatch.Draw(textureDict[tile.Value], new Rectangle(new Point(GetXPos(tile), GetYPos(tile)), new Point(GetScale(tileSize),GetScale(tileSize))),null, Color.White);
+                    spriteBatch.Draw(textureDict[tile.Value], new Rectangle(GetXPos(tile), GetYPos(tile),GetScale(),GetScale()),null, Color.White);
                 }
                 
             } 
@@ -116,9 +119,9 @@ namespace Zap_ecs.Tilemaps
             }
         
         }
-        private int GetScale(int TileSize)
+        private int GetScale()
         {
-            return (int)(TileSize * scale);
+            return (int)(tileSize * scale);
         }
         private int GetXPos(KeyValuePair<Vector2, int> tile)
         {

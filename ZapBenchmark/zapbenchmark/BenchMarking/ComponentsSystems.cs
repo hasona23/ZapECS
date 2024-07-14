@@ -37,14 +37,15 @@ namespace banchmark;
     {
         public drawSystem():base()
         {
-            SetRequirments(new Type[2] {typeof(Sprite),typeof(Transform)});
+        AddRequiredComponent<Sprite>();
         }
         public override void Update(GameTime gt, SpriteBatch sb = null)
         {
             if (sb != null)
             {
-                foreach (var entity in this.entities)
+                foreach (var id in this.registeredEntityIds)
                 {
+                Entity entity = world.GetEntityById(id);
                     var sprite = entity.GetComponent<Sprite>();
                     var transform = entity.GetComponent<Transform>();
                     sb.Draw(sprite.texture, new Rectangle(new Point((int)transform.pos.X, (int)transform.pos.Y), new Point((int)(transform.scale * sprite.texture.Width), (int)(transform.scale * sprite.texture.Width))), Color.White);
@@ -54,15 +55,16 @@ namespace banchmark;
     }
     public class MoveSystem : GameSystem
     {
-        public MoveSystem():base()
-        {
-            SetRequirments(new Type[2] { typeof(Transform), typeof(Velocity) });
-        }
+    public MoveSystem() : base()
+    {
+        AddRequiredComponent<Velocity>();
+    }
 
         public override void Update(GameTime gt, SpriteBatch sb = null)
         {
-            foreach (var entity in this.entities)
+            foreach (var id in this.registeredEntityIds)
             {
+                Entity entity = world.GetEntityById(id);
                 var velocity = entity.GetComponent<Velocity>();
                 var transform = entity.GetComponent<Transform>();
                 if (velocity.vel.Length()>0) {

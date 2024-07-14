@@ -1,3 +1,9 @@
+D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.csproj.AssemblyReference.cache
+D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.GeneratedMSBuildEditorConfig.editorconfig
+D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.AssemblyInfoInputs.cache
+D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.AssemblyInfo.cs
+D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.csproj.CoreCompileInputs.cache
+D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.sourcelink.json
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\Content\font.xnb
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\Content\tile_0040.xnb
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\ZapBenchmark.exe
@@ -16,12 +22,6 @@ D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\runtimes\win-x86\nativ
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\runtimes\win-x86\native\soft_oal.dll
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\Zap_ecs.dll
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\bin\Debug\net6.0\Zap_ecs.pdb
-D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.csproj.AssemblyReference.cache
-D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.GeneratedMSBuildEditorConfig.editorconfig
-D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.AssemblyInfoInputs.cache
-D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.AssemblyInfo.cs
-D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.csproj.CoreCompileInputs.cache
-D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.sourcelink.json
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBench.9EDF7CF2.Up2Date
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\ZapBenchmark.dll
 D:\Code\C#\Zap\ZapBenchmark\zapbenchmark\obj\Debug\net6.0\refint\ZapBenchmark.dll
