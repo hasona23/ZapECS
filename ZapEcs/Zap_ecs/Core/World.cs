@@ -14,7 +14,7 @@ namespace Zap_ecs.Core
         private int ID = 0;
         private Dictionary<Type,GameSystem> updateSystems;
         private Dictionary<Type,GameSystem> drawSystems;
-        //private Dictionary<Type, GameSystem> systems;
+       
         private List<int> remove;
 
         // Method to add an entity to the world

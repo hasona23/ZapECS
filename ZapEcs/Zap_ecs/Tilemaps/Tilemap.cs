@@ -134,7 +134,7 @@ namespace Zap_ecs.Tilemaps
     }
     public class Tile 
     {
-        //public Collision Component
+        //public Collision IComponent
         public Rectangle rect;
     }
     public enum CollisionMode

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Zap_ecs")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f4f6cae088664a5af5421d069edd2bb9d2f6aaa")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+15c47b59d309d423bc21dd1052d2dfed0e9e3ea8")]
 [assembly: System.Reflection.AssemblyProductAttribute("Zap_ecs")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Zap_ecs")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

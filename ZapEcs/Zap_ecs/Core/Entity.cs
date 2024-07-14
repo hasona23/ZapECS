@@ -41,7 +41,7 @@ namespace Zap_ecs.Core
             {
                 return (T)component;
             }
-            return null;
+            return default(T);
         }
 
         // Method to check if the entity has a component of a specific type
