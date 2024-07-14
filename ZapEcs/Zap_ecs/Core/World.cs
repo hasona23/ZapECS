@@ -10,132 +10,104 @@ namespace Zap_ecs.Core
 {
     public class World
     {
-        private Dictionary<int, Entity> entities;
-        private int ID = 0;
-        private Dictionary<Type,GameSystem> updateSystems;
-        private Dictionary<Type,GameSystem> drawSystems;
-        //private Dictionary<Type, GameSystem> systems;
-        private List<int> remove;
+        public List<Entity> Entities { get; private set; }
+        private List<GameSystem> updateSystems;
+        private List<GameSystem> drawSystems;
+        private List<Entity> remove;
 
         // Method to add an entity to the world
         public World() 
         {
-            entities = new Dictionary<int, Entity>();
-            updateSystems = new Dictionary<Type, GameSystem>();
-            drawSystems = new Dictionary<Type, GameSystem>();
-            remove = new List<int>();
+            Entities = new List<Entity>();   
+            updateSystems = new List<GameSystem>();
+            drawSystems = new List<GameSystem>();
+            remove = new List<Entity>();
         }
         public void AddEntity(Entity entity)
         {
-            entities[ID] = entity;
-            UpdateEntityRegistration(entity);
-        }
-        public Entity AddAndGetEntity() 
-        {
-            Entity entity = new Entity(ID++);
-            entities[entity.Id] = entity;
-            return entity;
-        }
-        public void DeleteEntity(int id)
-        {
-            remove.Add(id);
-        }
 
-        public Entity GetEntityById(int id)
-        {
-            return entities[id];
-        }
-        public void AddUpdateSystem(GameSystem system)
-        {
-            updateSystems[system.GetType()] = system;
-            system.BindToWorld(this);
-            foreach(Entity entity in entities.Values) 
+            if (entity != null) 
             {
-                system.UpdateEntityRegistration(entity);
+                foreach (var sys in updateSystems)
+                {
+                    if (entity.HasComponents(sys.GetSystemTypes()))
+                    {
+                        sys.entities.Add(entity);
+                    }
+                }
+                foreach (var system in drawSystems)
+                {
+                    if (entity.HasComponents(system.GetSystemTypes())) { system.entities.Add(entity); }
+                }
+                Entities.Add(entity);
             }
         }
 
-        public T GetUpdateSystem<T>() where T : GameSystem
+       
+
+        // Method to remove an entity from the world
+        public void DeleteEntity(Entity entity)
         {
-            return (T)updateSystems[typeof(T)];
-        }
-        public void AddDrawSystem(GameSystem system)
-        {
-            drawSystems[system.GetType()] = system;
-            system.BindToWorld(this);
-            foreach(Entity entity in entities.Values) 
+            foreach (var sys in updateSystems)
             {
-                system.UpdateEntityRegistration(entity);
+                sys.entities.Remove(entity);
             }
+            foreach (var system in drawSystems)
+            {
+                system.entities.Remove(entity);
+            }
+            this.Entities.Remove(entity);
             
         }
 
-        public T GetDrawSystem<T>() where T : GameSystem
+        public void RemoveEntity(Entity entity) 
         {
-            return (T)drawSystems[typeof(T)];
+            remove.Add(entity);
         }
-        private void UpdateEntityRegistration(Entity entity)
+        // Method to add a system to the world
+        public void AddUpdateSystem(GameSystem system)
         {
-            foreach (GameSystem system in drawSystems.Values)
+            if (!updateSystems.Contains(system))
             {
-                system.UpdateEntityRegistration(entity);
+                updateSystems.Add(system);
+                system.world = this;
+                foreach (var entity in Entities)
+                {
+                    if (entity.HasComponents(system.GetSystemTypes())) { system.entities.Add(entity); }
+                }
             }
-            foreach (GameSystem system in updateSystems.Values)
+        }
+        public void AddDrawSystem(GameSystem system)
+        {
+            if (!drawSystems.Contains(system))
             {
-                system.UpdateEntityRegistration(entity);
+                drawSystems.Add(system);
+                system.world = this;
+                foreach (var entity in Entities)
+                {
+                    if (entity.HasComponents(system.GetSystemTypes())) { system.entities.Add(entity); }
+                } 
             }
-
-        }
-        public void AddComponentToEntity(Entity entity, Component component)
-        {
-            entity.AddComponent(component);
-            UpdateEntityRegistration(entity);
-        }
-
-        public void RemoveComponentFromEntity<T>(Entity entity) where T : Component
-        {
-            entity.RemoveComponent<T>();
-            UpdateEntityRegistration(entity);
         }
 
         // Method to simulate an update step in the world
         public void Update(GameTime gameTime)
         {
-            foreach (var system in updateSystems.Values)
+            foreach (var system in updateSystems)
             {
                 system.Update(gameTime);
-            }
-            DisposeEntities();
-        }
-        public bool EntityExistId(int id) 
-        {
-            return entities.ContainsKey(id);
-        }
-        public void DisposeEntities() 
-        {
-            foreach (int id in remove)
-            {
-                if (!EntityExistId(id)) //safeguard against deleting twice
-                    continue;
-
-                foreach (GameSystem system in updateSystems.Values)
+                foreach (var entity in remove)
                 {
-                    system.DeleteEntity(id);
+                    this.DeleteEntity(entity);
                 }
-                foreach (GameSystem system in drawSystems.Values)
-                {
-                    system.DeleteEntity(id);
-                }
-
-                entities.Remove(id);
+                remove.Clear();
             }
-            remove.Clear();
         }
 
         // Method to simulate a draw step in the world
         public void Draw(GameTime gt, SpriteBatch sb)
         {
-            foreach (var system in drawSystems.Values)
+            foreach (var system in drawSystems)
             {
                 system.Update(gt,sb);
             }

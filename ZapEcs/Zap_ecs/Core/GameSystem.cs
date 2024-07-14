@@ -10,73 +10,22 @@ namespace Zap_ecs.Core;
 
 public abstract class GameSystem 
 {
-    private HashSet<int> registeredEntityIds;
-    private List<Type> requiredComponents;
-    protected World world;
-    protected List<Entity> Entities
+    public List<Entity> entities;
+    public List<Type> ComponentTypes { get; private set; }
+    public World world;
+    
+    public GameSystem() 
     {
-        get
-        {
-            var result = new List<Entity>();
-            foreach(int entityId in registeredEntityIds)
-            {
-                if (world.EntityExistId(entityId))
-                    result.Add(world.GetEntityById(entityId));
-            }
-
-            return result;
-        }
+        ComponentTypes = new List<Type>();
+        entities = new List<Entity>();
     }
-    protected GameSystem() 
+    public void SetRequirments(params Type[] types) 
     {
-      
-       registeredEntityIds = new HashSet<int>();
-       requiredComponents = new List<Type>();
-        
+        ComponentTypes = types.ToList();
     }
-    public void BindToWorld(World world) 
+    public Type[] GetSystemTypes() 
     {
-        this.world = world;
-    }
-    public void UpdateEntityRegistration(Entity entity)
-    {
-        bool matches = Matches(entity);
-        if (registeredEntityIds.Contains(entity.Id))
-        {
-            if (!matches)
-            {
-                registeredEntityIds.Remove(entity.Id);
-            }
-        }
-        else
-        {
-            if (matches)
-            {
-                registeredEntityIds.Add(entity.Id);
-            }
-        }
-    }
-    public virtual void DeleteEntity(int id)
-    {
-        if (registeredEntityIds.Contains(id))
-        {
-            registeredEntityIds.Remove(id);
-        }
-    }
-    protected void AddRequiredComponent<T>() where T : Component
-    {
-        requiredComponents.Add(typeof(T));
-    }
-    protected void AddRequiredComponents(params Type[] types) 
-    {
-        foreach(var type in types) 
-        {
-            requiredComponents.Add(type);
-        }
-    }
-    private bool Matches(Entity entity)
-    {
-        return entity.HasComponents(requiredComponents.ToArray());
+        return ComponentTypes.ToArray();
     }
 
     public abstract void Update(GameTime gt, SpriteBatch sb = null);
