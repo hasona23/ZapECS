@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ZapBenchmark")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f62d049280339bc93d02ea7e9181ea0229b4684c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+3f4f6cae088664a5af5421d069edd2bb9d2f6aaa")]
 [assembly: System.Reflection.AssemblyProductAttribute("ZapBenchmark")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ZapBenchmark")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

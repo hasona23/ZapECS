@@ -32,27 +32,25 @@ namespace banchmark
             _graphics.PreferredBackBufferHeight = Globals.WindowSize.Y;
             _graphics.ApplyChanges();
         }
-        public Entity model()
+        public void summon()
         {
-            Entity e = new Entity();
+            Entity e = world.AddAndGetEntity();
             Sprite s = new Sprite(t);
             Velocity v = new Velocity(new Vector2(new Random().Next(1,100), new Random().Next(1,100)), 10f);
             Transform tr = new Transform(new Vector2(new Random().Next(1, Globals.WindowSize.X), new Random().Next(1, Globals.WindowSize.Y)), 2);
-            e.AddComponent(s);
-            e.AddComponent(tr);
-            e.AddComponent(v);
-            return e;
+            world.AddComponentToEntity(e, s);
+            world.AddComponentToEntity(e, v);
+            world.AddComponentToEntity(e, tr);
+            
         }
 
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
             t = Content.Load<Texture2D>("tile_0040");
-            for (int i = 0; i < 56000; i++)
+            for (int i = 0; i < 48000; i++)
             {
-                Entity e = model();
-                if (e == null) { Debug.WriteLine("NULL"); }
-                world.AddEntity(e);
+               summon();
             }
             world.AddUpdateSystem(move);
             world.AddDrawSystem(draw);
@@ -74,9 +72,9 @@ namespace banchmark
 
             // TODO: Add your update logic here
             if (Keyboard.GetState().IsKeyDown(Keys.E))
-                world.RemoveEntity(world.Entities[new Random().Next(world.Entities.Count)]);
+                world.DeleteEntity(new Random().Next(world.GetEntitesCount()));
             if (Keyboard.GetState().IsKeyDown(Keys.Q))
-                world.AddEntity(model());
+                summon();
             
            
 
@@ -94,7 +92,7 @@ namespace banchmark
             _spriteBatch.Begin(samplerState: SamplerState.PointClamp);
             world.Draw(gameTime, _spriteBatch);
             _spriteBatch.DrawString(font, fps.AverageFramesPerSecond.ToString(), new Vector2(50, 50), Color.White);
-            _spriteBatch.DrawString(font, world.Entities.Count.ToString(), new Vector2(50, 100), Color.White);
+            _spriteBatch.DrawString(font, world.GetEntitesCount().ToString(), new Vector2(50, 100), Color.White);
             _spriteBatch.End();
             base.Draw(gameTime);
         }

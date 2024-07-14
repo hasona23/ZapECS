@@ -4,8 +4,8 @@
   <Platform>DesktopGL</Platform>
   <Config />
   <SourceFiles>
-    <File>D:/Code/C#/Game/TopDown/TopDonwGame/Content/font.spritefont</File>
-    <File>D:/Code/C#/Game/TopDown/TopDonwGame/Content/tile_0040.png</File>
+    <File>D:/Code/C#/Zap/ZapBenchmark/zapbenchmark/Content/font.spritefont</File>
+    <File>D:/Code/C#/Zap/ZapBenchmark/zapbenchmark/Content/tile_0040.png</File>
   </SourceFiles>
   <DestFiles>
     <File xsi:nil="true" />

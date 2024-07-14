@@ -18,6 +18,10 @@ namespace Zap_ecs.Core
         private List<int> remove;
 
         // Method to add an entity to the world
+        public int GetEntitesCount() 
+        {
+            return entities.Count;
+        }
         public World() 
         {
             entities = new Dictionary<int, Entity>();
@@ -86,13 +90,13 @@ namespace Zap_ecs.Core
             }
 
         }
-        public void AddComponentToEntity(Entity entity, Component component)
+        public void AddComponentToEntity(Entity entity, IComponent component)
         {
             entity.AddComponent(component);
             UpdateEntityRegistration(entity);
         }
 
-        public void RemoveComponentFromEntity<T>(Entity entity) where T : Component
+        public void RemoveComponentFromEntity<T>(Entity entity) where T : IComponent
         {
             entity.RemoveComponent<T>();
             UpdateEntityRegistration(entity);

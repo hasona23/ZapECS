@@ -12,8 +12,8 @@ namespace Zap_ecs.Core
         public string name { get; set; }
 
         // Dictionary to store components by type
-        private Dictionary<Type, Component> components = new Dictionary<Type, Component>();
-        private List<GameSystem> systems = new List<GameSystem>();
+        private Dictionary<Type, IComponent> components = new Dictionary<Type, IComponent>();
+       
         
         // Constructor to initialize the entity with an ID
         public Entity(int id,string name)
@@ -29,13 +29,13 @@ namespace Zap_ecs.Core
        
 
         // Method to add a component to the entity
-        public void AddComponent<T>(T component) where T : Component
+        public void AddComponent<T>(T component) where T : IComponent
         {
             components[component.GetType()] = component;
         }
 
         // Method to get a component of a specific type
-        public T GetComponent<T>() where T : Component
+        public T GetComponent<T>() where T : IComponent
         {
             if (components.TryGetValue(typeof(T), out var component))
             {
@@ -45,7 +45,7 @@ namespace Zap_ecs.Core
         }
 
         // Method to check if the entity has a component of a specific type
-        public bool HasComponent<T>() where T : Component
+        public bool HasComponent<T>() where T : IComponent
         {
             return components.ContainsKey(typeof(T));
         }
@@ -67,7 +67,7 @@ namespace Zap_ecs.Core
             return true;
         }
 
-       public void RemoveComponent<T>() where T : Component
+       public void RemoveComponent<T>() where T : IComponent
        {
             components.Remove(typeof(T)); 
        }

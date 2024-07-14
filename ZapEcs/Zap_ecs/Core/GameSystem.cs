@@ -10,7 +10,7 @@ namespace Zap_ecs.Core;
 
 public abstract class GameSystem 
 {
-    private HashSet<int> registeredEntityIds;
+    protected HashSet<int> registeredEntityIds;
     private List<Type> requiredComponents;
     protected World world;
     protected List<Entity> Entities
@@ -63,7 +63,7 @@ public abstract class GameSystem
             registeredEntityIds.Remove(id);
         }
     }
-    protected void AddRequiredComponent<T>() where T : Component
+    protected void AddRequiredComponent<T>() where T : IComponent
     {
         requiredComponents.Add(typeof(T));
     }
